@@ -28,8 +28,8 @@ Route::get('/posts/{post:title}', [\App\Http\Controllers\PostController::class,'
 //    ]);
 //})->name('category');
 
-Route::get('authors/{author:username}', function (User $author){
-    return view('posts.index',[
-        'posts'=> $author->posts,
-    ]);
-});
+//Route::get('authors/{author:username}', function (User $author){
+//    return view('posts.index',[
+//        'posts'=> $author->posts,
+//    ]);
+//});
