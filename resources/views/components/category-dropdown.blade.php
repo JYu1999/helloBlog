@@ -5,7 +5,7 @@
             <x-icon name="down-arrow" class="absolute pointer-events-none" style="right: 12px;"></x-icon>
         </button>
     </x-slot>
-    <x-dropdown-item href="/" :active="request()->routeIs('home')">
+    <x-dropdown-item href="/?{{http_build_query(request()->except('category','page'))}}" :active="request()->routeIs('home')">
         All
     </x-dropdown-item>
     @foreach($categories as $category)
