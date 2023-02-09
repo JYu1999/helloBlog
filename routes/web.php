@@ -31,6 +31,5 @@ Route::get('/posts/{post:title}', [\App\Http\Controllers\PostController::class,'
 Route::get('authors/{author:username}', function (User $author){
     return view('posts',[
         'posts'=> $author->posts,
-        'categories'=>Category::all()
     ]);
 });
