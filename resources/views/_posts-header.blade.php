@@ -22,7 +22,7 @@
                   All
               </x-dropdown-item>
                 @foreach($categories as $category)
-                    <x-dropdown-item href="/categories/{{$category->name}}/"
+                    <x-dropdown-item href="/?category={{$category->name}}"
                     :active='request()->is("categories/{$category->name}")'>
                         {{$category->name}}
                     </x-dropdown-item>
