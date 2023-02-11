@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -20,16 +21,7 @@ Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('ho
 
 Route::get('/posts/{post:title}', [\App\Http\Controllers\PostController::class,'show']);
 
-//Route::get('categories/{category:name}', function (Category $category){
-//    return view('posts',[
-//        'posts'=>$category->posts,
-//        'currentCategory'=>$category,
-//        'categories'=>Category::all()
-//    ]);
-//})->name('category');
 
-//Route::get('authors/{author:username}', function (User $author){
-//    return view('posts.index',[
-//        'posts'=> $author->posts,
-//    ]);
-//});
+
+Route::get('register',[RegisterController::class, 'create']);
+Route::post('register',[RegisterController::class,'store']);
