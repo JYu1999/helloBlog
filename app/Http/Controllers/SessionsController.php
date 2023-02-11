@@ -20,7 +20,8 @@ class SessionsController extends Controller
             'password'=>'required'
         ]);
 
-        if(auth()->attempt()){
+        if(auth()->attempt($attribute)){
+            session()->regenerate();
             return redirect('/')->with('success','Log in Successfully!');
         }
 
