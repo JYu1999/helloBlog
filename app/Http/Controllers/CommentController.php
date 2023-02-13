@@ -17,6 +17,6 @@ class CommentController extends Controller
             'user_id'=>\request()->user()->id,
             'body'=>\request('body')
         ]);
-        return redirect('/');
+        return redirect("/posts/$post->title");
     }
 }
