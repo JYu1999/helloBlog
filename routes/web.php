@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Models\Category;
@@ -18,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\PostController::class,'index'])->name('home');
+Route::get('/', [PostController::class,'index'])->name('home');
 
-Route::get('/posts/{post:title}', [\App\Http\Controllers\PostController::class,'show']);
-
+Route::get('/posts/{post:title}', [PostController::class,'show']);
+Route::post('posts/{post:title}/comments', [CommentController::class,'store']);
 
 
 Route::get('register',[RegisterController::class, 'create'])->middleware('guest');
