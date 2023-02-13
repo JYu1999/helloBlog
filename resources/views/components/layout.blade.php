@@ -6,6 +6,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+</style>
+
 <body style="font-family: Open Sans, sans-serif">
 <section class="px-6 py-8">
     <nav class="md:flex md:justify-between md:items-center">
@@ -30,7 +36,7 @@
            @endauth
 
 
-            <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+            <a href="#newsletter" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                 Subscribe for Updates
             </a>
         </div>
@@ -60,6 +66,7 @@
 
                     <button type="submit"
                             class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8"
+                            id="newsletter"
                     >
                         Subscribe
                     </button>
