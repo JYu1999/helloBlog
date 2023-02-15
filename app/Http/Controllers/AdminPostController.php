@@ -22,19 +22,14 @@ class AdminPostController extends Controller
 
     public function store()
     {
-        $attributes = \request()->validate([
-            'title'=>'required',
-            'thumbnail'=>'required|image',
-            'excerpt'=>'required',
-            'body'=>'required',
-            'category_id'=>['required',Rule::exists('categories','id')]
-        ]);
+
+        $attributes = $this->getAttributes(new Post());
         $attributes['user_id']=auth()->id();
         $attributes['thumbnail'] = \request()->file('thumbnail')->store('thumbnails');
 
         Post::create($attributes);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Post Created!');
     }
 
     public function edit(Post $post)
@@ -44,13 +39,7 @@ class AdminPostController extends Controller
 
     public function update(Post $post)
     {
-        $attributes = \request()->validate([
-            'title'=>'required',
-            'thumbnail'=>'image',
-            'excerpt'=>'required',
-            'body'=>'required',
-            'category_id'=>['required',Rule::exists('categories','id')]
-        ]);
+        $attributes = $this->getAttributes($post);
 
         if(isset($attributes['thumbnail'])){
             $attributes['thumbnail'] = \request()->file('thumbnail')->store('thumbnails');
@@ -66,5 +55,23 @@ class AdminPostController extends Controller
         $post->delete();
 
         return back()->with('success', 'Post Deleted');
+    }
+
+    /**
+     * @param Post $post
+     * @return array
+     */
+    public function getAttributes(?Post $post = null): array
+    {
+        $post ??=new Post();
+        $attributes = \request()->validate([
+            'title' => ['required', Rule::unique('posts', 'title')->ignore($post)],
+            'thumbnail' => $post->exists() ? ['image'] : ['required', 'image'],
+            'excerpt' => 'required',
+            'body' => 'required',
+            'category_id' => ['required', Rule::exists('categories', 'id')]
+
+        ]);
+        return $attributes;
     }
 }
