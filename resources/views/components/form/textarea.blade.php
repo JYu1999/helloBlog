@@ -4,7 +4,7 @@
     <x-form.label name="{{$name}}"/>
 
     <textarea name="{{$name}}" id="{{$name}}"
-              class="border border-gray-400 p-2 w-full"
+              class="border border-gray-300 p-2 w-full"
               required
     >{{old($name)}}</textarea>
 
