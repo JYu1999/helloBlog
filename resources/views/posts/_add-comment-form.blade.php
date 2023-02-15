@@ -18,7 +18,7 @@
             </div>
 
             <div class="flex justify-end mt-8">
-                <x-submit-button>Post</x-submit-button>
+               <x-form.button>Submit</x-form.button>
             </div>
 
         </form>
